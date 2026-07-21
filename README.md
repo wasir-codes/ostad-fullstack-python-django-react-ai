@@ -1,0 +1,1 @@
+# ostad-fullstack-python-django-react-ai
