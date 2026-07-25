@@ -1,0 +1,137 @@
+/* ===== My custom theme ===== */
+
+:root {
+    --brand: #1b2a4a;
+    --brand-light: #2c4370;
+    --accent: #ff6b4a;
+    --page-bg: #f4f6fb;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--page-bg) !important;
+    color: #2f3542;
+}
+
+/* ===== Navbar ===== */
+
+.site-navbar {
+    background-color: var(--brand);
+}
+
+.navbar-brand {
+    letter-spacing: 0.5px;
+}
+
+.navbar-brand span {
+    color: var(--accent);
+}
+
+.site-navbar .nav-link:hover {
+    color: var(--accent) !important;
+}
+
+/* ===== Cards ===== */
+
+.card {
+    border: none;
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(27, 42, 74, 0.08);
+}
+
+.card-header {
+    background-color: #fff;
+    border-bottom: 1px solid #eef0f6;
+    border-radius: 14px 14px 0 0 !important;
+    font-weight: 600;
+}
+
+/* ===== Dashboard summary cards ===== */
+
+.stat-card {
+    border-left: 5px solid #ccc;
+    transition: transform 0.2s;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+}
+
+.stat-card .stat-label {
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #8b93a7;
+    margin-bottom: 6px;
+}
+
+.stat-card .stat-number {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.stat-total {
+    background: linear-gradient(135deg, var(--brand), var(--brand-light));
+    border-left: 5px solid var(--accent);
+}
+
+.stat-total .stat-label {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.stat-total .stat-number {
+    color: #fff;
+    font-size: 2.6rem;
+}
+
+.stat-applied { border-left-color: #0d6efd; }
+.stat-interview { border-left-color: #ffc107; }
+.stat-offer { border-left-color: #0dcaf0; }
+.stat-accepted { border-left-color: #198754; }
+.stat-rejected { border-left-color: #dc3545; }
+
+/* ===== Buttons ===== */
+
+.btn-primary {
+    background-color: var(--accent);
+    border-color: var(--accent);
+}
+
+.btn-primary:hover {
+    background-color: #e85732;
+    border-color: #e85732;
+}
+
+.btn-outline-primary {
+    color: var(--brand);
+    border-color: var(--brand);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--brand);
+    border-color: var(--brand);
+}
+
+/* ===== Table ===== */
+
+.table-dark th {
+    background-color: var(--brand) !important;
+    font-weight: 500;
+}
+
+table th {
+    white-space: nowrap;
+}
+
+.page-title {
+    font-weight: 600;
+    color: var(--brand);
+}
+
+/* ===== Footer ===== */
+
+.site-footer {
+    background-color: var(--brand);
+    color: rgba(255, 255, 255, 0.6);
+}

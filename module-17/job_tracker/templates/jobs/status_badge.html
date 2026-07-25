@@ -1,0 +1,11 @@
+{% if application.status == 'applied' %}
+    <span class="badge bg-primary">{{ application.get_status_display }}</span>
+{% elif application.status == 'interview' %}
+    <span class="badge bg-warning text-dark">{{ application.get_status_display }}</span>
+{% elif application.status == 'offer' %}
+    <span class="badge bg-info text-dark">{{ application.get_status_display }}</span>
+{% elif application.status == 'accepted' %}
+    <span class="badge bg-success">{{ application.get_status_display }}</span>
+{% else %}
+    <span class="badge bg-danger">{{ application.get_status_display }}</span>
+{% endif %}

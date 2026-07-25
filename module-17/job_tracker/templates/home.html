@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block title %}Home | Job Application Tracker{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="h3 page-title mb-1">Job Application Tracker</h1>
+        <p class="text-muted mb-0">All my job applications in one place.</p>
+    </div>
+    <a href="{% url 'jobs:job_create' %}" class="btn btn-primary">+ Add Application</a>
+</div>
+
+<!-- Summary cards -->
+<div class="row g-3 mb-4">
+    <div class="col-12 col-md-4">
+        <div class="card stat-card stat-total h-100">
+            <div class="card-body">
+                <p class="stat-label">Total Applications</p>
+                <p class="stat-number">{{ total }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-6 col-md-4">
+        <div class="card stat-card stat-applied h-100">
+            <div class="card-body">
+                <p class="stat-label">Applied</p>
+                <p class="stat-number">{{ applied }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-6 col-md-4">
+        <div class="card stat-card stat-interview h-100">
+            <div class="card-body">
+                <p class="stat-label">Interview</p>
+                <p class="stat-number">{{ interview }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-4">
+        <div class="card stat-card stat-offer h-100">
+            <div class="card-body">
+                <p class="stat-label">Offer</p>
+                <p class="stat-number">{{ offer }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-4">
+        <div class="card stat-card stat-accepted h-100">
+            <div class="card-body">
+                <p class="stat-label">Accepted</p>
+                <p class="stat-number">{{ accepted }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-4">
+        <div class="card stat-card stat-rejected h-100">
+            <div class="card-body">
+                <p class="stat-label">Rejected</p>
+                <p class="stat-number">{{ rejected }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Recent applications -->
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        Recent Applications
+        <a href="{% url 'jobs:job_list' %}" class="btn btn-sm btn-outline-primary">View all</a>
+    </div>
+    <div class="card-body p-0">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>Company</th>
+                    <th>Position</th>
+                    <th>Status</th>
+                    <th>Applied On</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for job in recent %}
+                <tr>
+                    <td><a href="{% url 'jobs:job_detail' job.pk %}">{{ job.company_name }}</a></td>
+                    <td>{{ job.position }}</td>
+                    <td>{% include 'jobs/status_badge.html' with application=job %}</td>
+                    <td>{{ job.application_date|date:"d M Y" }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" class="text-center text-muted py-4">
+                        No applications yet.
+                        <a href="{% url 'jobs:job_create' %}">Add your first one.</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
