@@ -125,12 +125,18 @@ session, so the numbers stay consistent from one screenshot to the next.
    python manage.py migrate
    ```
 
-4. (Optional) Seed some sample data if you want a fresh demo account:
+4. (Optional) Seed sample data - **only if you want to reset the demo
+   account**:
    ```
    python manage.py seed_data
    ```
-   This creates a user `demo_user` with password `DemoPass123`, an account,
-   and 8 sample transactions.
+   The included `db.sqlite3` already has the `demo_user` account with the
+   transactions shown in the screenshots above (the original 8 seeded
+   transactions plus the deposit/withdrawal made while taking the
+   screenshots). Running this command wipes that and recreates `demo_user`
+   from scratch with only 8 fresh transactions - so if you want the account
+   to match what's in the screenshots, skip this step. Only run it if you
+   want a clean demo account instead.
 
 5. Run the server:
    ```
