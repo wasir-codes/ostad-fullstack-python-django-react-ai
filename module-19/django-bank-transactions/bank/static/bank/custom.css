@@ -1,0 +1,117 @@
+/* Ostad Bank color theme - yellow / black / grey.
+   Loaded after Bootstrap so these rules override the defaults. */
+
+:root {
+    --ob-black: #1c1c1c;
+    --ob-yellow: #f5c518;
+    --ob-yellow-dark: #d9ac00;
+    --ob-grey-light: #f2f2f2;
+    --ob-grey-dark: #4a4a4a;
+}
+
+body {
+    background-color: var(--ob-grey-light);
+    /* the taka symbol (Tk) needs a font that actually has the Bengali glyph -
+       listing a few common ones here so it has the best chance of rendering
+       properly instead of showing as a blank box on systems without one */
+    font-family: "Noto Sans Bengali", "Nirmala UI", "Vrinda", -apple-system,
+        "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--ob-black) !important;
+}
+.navbar-brand {
+    color: var(--ob-yellow) !important;
+    font-weight: bold;
+}
+.navbar .btn-outline-light {
+    color: var(--ob-yellow) !important;
+    border-color: var(--ob-yellow) !important;
+}
+.navbar .btn-outline-light:hover {
+    background-color: var(--ob-yellow) !important;
+    color: var(--ob-black) !important;
+}
+
+/* Main action buttons - yellow instead of Bootstrap's default blue */
+.btn-primary {
+    background-color: var(--ob-yellow) !important;
+    border-color: var(--ob-yellow) !important;
+    color: var(--ob-black) !important;
+}
+.btn-primary:hover {
+    background-color: var(--ob-yellow-dark) !important;
+    border-color: var(--ob-yellow-dark) !important;
+    color: var(--ob-black) !important;
+}
+
+/* Deposit stays yellow (money coming in), withdraw goes black (money going out) -
+   keeps the two actions visually distinct without leaving the palette */
+.btn-success {
+    background-color: var(--ob-yellow) !important;
+    border-color: var(--ob-yellow) !important;
+    color: var(--ob-black) !important;
+}
+.btn-success:hover {
+    background-color: var(--ob-yellow-dark) !important;
+    border-color: var(--ob-yellow-dark) !important;
+}
+.btn-danger {
+    background-color: var(--ob-black) !important;
+    border-color: var(--ob-black) !important;
+    color: var(--ob-yellow) !important;
+}
+.btn-danger:hover {
+    background-color: #000 !important;
+    border-color: #000 !important;
+    color: var(--ob-yellow) !important;
+}
+
+/* Dashboard summary cards - grey surfaces instead of the loud default
+   Bootstrap green/red/blue cards */
+.card {
+    border: none;
+    background-color: #fff;
+}
+.card.bg-success,
+.card.bg-info {
+    background-color: var(--ob-grey-dark) !important;
+    color: var(--ob-yellow) !important;
+}
+.card.bg-danger {
+    background-color: var(--ob-black) !important;
+    color: var(--ob-yellow) !important;
+}
+
+/* Transaction type badges on the history page */
+.badge.bg-success {
+    background-color: var(--ob-yellow) !important;
+    color: var(--ob-black) !important;
+}
+.badge.bg-danger {
+    background-color: var(--ob-black) !important;
+    color: var(--ob-yellow) !important;
+}
+
+/* Success messages stay on-brand; error messages keep Bootstrap's red so
+   "something went wrong" still reads clearly at a glance */
+.alert-success {
+    background-color: var(--ob-black);
+    color: var(--ob-yellow);
+    border-color: var(--ob-yellow);
+}
+
+/* Pagination */
+.page-item.active .page-link {
+    background-color: var(--ob-yellow) !important;
+    border-color: var(--ob-yellow) !important;
+    color: var(--ob-black) !important;
+}
+.page-link {
+    color: var(--ob-black);
+}
+.page-link:hover {
+    color: var(--ob-yellow-dark);
+}
