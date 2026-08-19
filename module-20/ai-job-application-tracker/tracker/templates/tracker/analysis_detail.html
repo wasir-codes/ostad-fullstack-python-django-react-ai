@@ -1,0 +1,37 @@
+{% extends 'tracker/base.html' %}
+{% block title %}AI Analysis{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-start mb-3">
+    <div>
+        <h2>AI Analysis</h2>
+        <h6 class="text-muted">{{ application.job_title }} - {{ application.company_name }}</h6>
+    </div>
+    <a href="{% url 'application_detail' application.pk %}" class="btn btn-outline-secondary btn-sm">Back to Application</a>
+</div>
+
+<div class="card mb-3">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <span>Result</span>
+        <a href="{% url 'analyze_job' application.pk %}" class="btn btn-sm btn-outline-primary">
+            {% if application.analysis %}Re-analyze{% else %}Analyze with AI{% endif %}
+        </a>
+    </div>
+    <div class="card-body">
+        {% if application.analysis %}
+            <h6>Job Summary</h6>
+            <p style="white-space: pre-wrap;">{{ application.analysis.summary }}</p>
+            <h6>Required Skills</h6>
+            <p style="white-space: pre-wrap;">{{ application.analysis.required_skills }}</p>
+            <h6>Required Experience</h6>
+            <p style="white-space: pre-wrap;">{{ application.analysis.required_experience }}</p>
+            <h6>Important Technologies</h6>
+            <p style="white-space: pre-wrap;">{{ application.analysis.important_technologies }}</p>
+            <h6>Interview Preparation Suggestions</h6>
+            <p style="white-space: pre-wrap;">{{ application.analysis.interview_prep }}</p>
+            <p class="text-muted small mt-3 mb-0">Analyzed on {{ application.analysis.created_at|date:"d M Y, H:i" }}</p>
+        {% else %}
+            <p class="text-muted mb-0">No analysis yet. Click "Analyze with AI" above (the application needs a job description saved first).</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

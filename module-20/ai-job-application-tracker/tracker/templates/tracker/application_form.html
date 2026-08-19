@@ -1,0 +1,72 @@
+{% extends 'tracker/base.html' %}
+{% block title %}{% if is_edit %}Edit Application{% else %}New Application{% endif %}{% endblock %}
+{% block content %}
+<h2 class="mb-4">{% if is_edit %}Edit Application{% else %}New Application{% endif %}</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label class="form-label">{{ form.job_title.label }}</label>
+            {{ form.job_title }}
+        </div>
+        <div class="col-md-6 mb-3">
+            <label class="form-label">{{ form.company_name.label }}</label>
+            {{ form.company_name }}
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">{{ form.job_description.label }}</label>
+        {{ form.job_description }}
+        <div class="form-text">{{ form.job_description.help_text }}</div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <label class="form-label">{{ form.location.label }}</label>
+            {{ form.location }}
+        </div>
+        <div class="col-md-4 mb-3">
+            <label class="form-label">{{ form.salary.label }}</label>
+            {{ form.salary }}
+        </div>
+        <div class="col-md-4 mb-3">
+            <label class="form-label">{{ form.application_date.label }}</label>
+            {{ form.application_date }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label class="form-label">{{ form.job_url.label }}</label>
+            {{ form.job_url }}
+        </div>
+        <div class="col-md-3 mb-3">
+            <label class="form-label">{{ form.status.label }}</label>
+            {{ form.status }}
+        </div>
+        <div class="col-md-3 mb-3">
+            <label class="form-label">{{ form.category.label }}</label>
+            {{ form.category }}
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Tags</label>
+        <div>{{ form.tags }}</div>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">{{ form.notes.label }}</label>
+        {{ form.notes }}
+    </div>
+
+    {% if form.non_field_errors %}
+        <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+    {% endif %}
+
+    <button type="submit" class="btn btn-primary">{% if is_edit %}Save Changes{% else %}Add Application{% endif %}</button>
+    <a href="{% if is_edit %}{% url 'application_detail' application.pk %}{% else %}{% url 'application_list' %}{% endif %}" class="btn btn-outline-secondary">Cancel</a>
+</form>
+{% endblock %}

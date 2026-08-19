@@ -1,0 +1,63 @@
+{% extends 'tracker/base.html' %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h2 class="mb-4">Dashboard</h2>
+
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card text-white bg-primary mb-3">
+            <div class="card-body">
+                <h6 class="card-title">Total Applications</h6>
+                <p class="fs-3 mb-0">{{ total_applications }}</p>
+            </div>
+        </div>
+    </div>
+    <!-- applications by status, one small card per status - counted with
+         .values('status').annotate(Count('id')) in the view, not a python loop -->
+    {% for row in status_counts %}
+    <div class="col-md-3">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h6 class="card-title text-muted">{{ row.label }}</h6>
+                <p class="fs-3 mb-0">{{ row.total }}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card mb-3">
+            <div class="card-header">Recent Applications</div>
+            <ul class="list-group list-group-flush">
+                {% for app in recent_applications %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="{% url 'application_detail' app.pk %}">{{ app.job_title }} - {{ app.company_name }}</a>
+                    <span class="badge bg-secondary status-badge">{{ app.get_status_display }}</span>
+                </li>
+                {% empty %}
+                <li class="list-group-item text-muted">No applications yet. <a href="{% url 'application_create' %}">Add one</a>.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card mb-3">
+            <div class="card-header">Upcoming Interviews</div>
+            <ul class="list-group list-group-flush">
+                {% for interview in upcoming_interviews %}
+                <li class="list-group-item">
+                    <a href="{% url 'application_detail' interview.application.pk %}">{{ interview.application.job_title }}</a>
+                    - {{ interview.get_interview_type_display }}
+                    <br><small class="text-muted">{{ interview.interview_datetime|date:"d M Y, H:i" }}</small>
+                </li>
+                {% empty %}
+                <li class="list-group-item text-muted">No upcoming interviews scheduled.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'tracker/base.html' %}
+{% block title %}Delete Application{% endblock %}
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <h4>Delete this application?</h4>
+        <p>Are you sure you want to delete <strong>{{ application.job_title }}</strong> at <strong>{{ application.company_name }}</strong>? This also deletes any interviews and AI analysis linked to it. This can't be undone.</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Yes, delete it</button>
+            <a href="{% url 'application_detail' application.pk %}" class="btn btn-outline-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+venv/
+__pycache__/
+*.pyc
+.DS_Store
+*.log
+
+# never commit real secrets - .env holds the actual API key and SECRET_KEY
+.env
+
+# local sqlite db - everyone running this should seed their own data
+db.sqlite3
