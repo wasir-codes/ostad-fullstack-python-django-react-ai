@@ -21,15 +21,21 @@ Assignment submissions for the Ostad course **"Full Stack Web Development with P
 Each module has its own folder containing the assignment file(s) for that module:
 
 ```
-module-16/ └── Wasir_Django_Introduction_M16_Assignment.pdf
+module-16/
+└── Wasir_Django_Introduction_M16_Assignment.pdf
 
-module-17/ └── job_tracker/ Job Application Tracker (Django project)
+module-17/
+└── job_tracker/          Job Application Tracker (Django project)
 
-module-18/ └── Wasir_Django_ORM_Auth_M18_Assignment.pdf
+module-18/
+└── Wasir_Django_ORM_Auth_M18_Assignment.pdf
 
-module-19/ └── django-bank-transactions/ Bank Account Transaction System (Django project)
+module-19/
+└── django-bank-transactions/        Bank Account Transaction System (Django project)
 
-module-20/ └── ai-job-application-tracker/ AI-Powered Job Application Tracker (Django project)
+module-20/
+└── ai-job-application-tracker/      AI-Powered Job Application Tracker (Django project)
+
 ```
 
 
